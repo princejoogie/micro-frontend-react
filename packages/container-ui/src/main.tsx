@@ -1,18 +1,6 @@
 import { createRoot } from "react-dom/client";
+import App, { Hosts } from "./app";
 import "./index.css";
-
-export type Hosts = {
-  [customElementName: `mfe-${string}`]: string;
-};
-
-export type AppProps = {
-  children?: Hosts;
-};
-
-const App = ({ children }: AppProps) => {
-  console.log({ children });
-  return <div>Hello World</div>;
-};
 
 const CUSTOM_ELEMENT_TAG = "mfe-container-ui";
 
@@ -25,8 +13,12 @@ class ContainerUI extends HTMLElement {
     return JSON.parse(this.getAttribute("children") || "{}");
   }
 
+  getHosts(): Hosts {
+    return JSON.parse(this.getAttribute("hosts") || "{}");
+  }
+
   connectedCallback() {
-    createRoot(this).render(<App children={this.getChildren()} />);
+    createRoot(this).render(<App hosts={this.getHosts()} children={this.getChildren()} />);
   }
 
   disconnectedCallback() {}
