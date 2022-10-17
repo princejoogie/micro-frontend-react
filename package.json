@@ -1,0 +1,23 @@
+{
+  "name": "micro-frontend-test",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "yarn workspaces foreach -vpA run dev",
+    "build": "yarn workspaces foreach -vpA run build",
+    "clean": "yarn workspaces foreach -vpA run clean && rm -rf node_modules",
+    "format": "yarn workspaces foreach -vpA exec prettier --write ."
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "yarn": "3.2.4"
+  },
+  "packageManager": "yarn@3.2.4"
+}
