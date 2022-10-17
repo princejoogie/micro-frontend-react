@@ -1,33 +1,24 @@
-import React, { useEffect, createElement } from "react";
-import { createBrowserHistory } from "history";
+import { useEffect } from "react";
 
 export type Hosts = {
   [customElementName: `mfe-${string}`]: string;
 };
 
-export type AppProps = {
-  hosts?: Hosts;
-  children?: Hosts;
+const defaultHosts: Hosts = {
+  "mfe-about-ui": `${import.meta.env.VITE_APP_ABOUT_HOST}/main.js`,
+  "mfe-home-ui": `${import.meta.env.VITE_APP_HOME_HOST}/main.js`,
 };
 
-window.mfeHistory = createBrowserHistory();
+const defaultStyles = [
+  `${import.meta.env.VITE_APP_HOME_HOST}/main.css`,
+  `${import.meta.env.VITE_APP_ABOUT_HOST}/main.css`,
+];
 
-const App = ({ hosts, children }: AppProps) => {
-  const defaultHosts: Hosts = {
-    "mfe-about-ui": `${import.meta.env.VITE_APP_ABOUT_HOST}/main.js`,
-    "mfe-home-ui": `${import.meta.env.VITE_APP_HOME_HOST}/main.js`,
-  };
-
-  const mergedHosts = { ...defaultHosts, ...hosts };
-  const hasChildren = Object.keys(children ?? {}).length !== 0;
-  const appHosts = hasChildren ? children ?? {} : mergedHosts;
-
+const App = () => {
   useEffect(() => {
-    Object.entries(appHosts).forEach(([customElementName, host]) => {
-      const scriptId = `microfrontend-script-${customElementName}`;
-
+    Object.entries(defaultHosts).forEach(([customElementName, host]) => {
+      const scriptId = `mfe-script-${customElementName}`;
       if (document.getElementById(scriptId)) {
-        // Don't append the script if it already exists in the document head
         return;
       }
 
@@ -36,16 +27,25 @@ const App = ({ hosts, children }: AppProps) => {
       script.src = host;
       document.head.appendChild(script);
     });
-  }, [appHosts]);
 
-  const injectedChildren = Object.keys(appHosts).map((customElementName) =>
-    createElement(customElementName, { key: customElementName })
-  );
+    defaultStyles.forEach((style) => {
+      const styleId = `mfe-style-${style}`;
+      if (document.getElementById(styleId)) {
+        return;
+      }
+
+      const link = document.createElement("link");
+      link.id = styleId;
+      link.rel = "stylesheet";
+      link.href = style;
+      document.head.appendChild(link);
+    });
+  }, []);
 
   return (
     <div>
-      <nav className="w-full bg-white shadow-md py-4">
-        <div className="container mx-auto flex items-center justify-between">
+      <nav className="w-full bg-white py-4 border-b">
+        <div className="container px-4 mx-auto flex items-center justify-between">
           <h1 className="font-semibold">Container UI</h1>
 
           <div className="flex items-center space-x-4">
@@ -55,8 +55,8 @@ const App = ({ hosts, children }: AppProps) => {
         </div>
       </nav>
 
-      <div className="container mx-auto mt-4">
-        <React.Fragment>{injectedChildren}</React.Fragment>
+      <div className="container px-4 mx-auto mt-4">
+        <mfe-about-ui></mfe-about-ui>
       </div>
     </div>
   );

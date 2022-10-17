@@ -1,8 +1,11 @@
 import { createRoot } from "react-dom/client";
+import { createBrowserHistory } from "history";
 import App, { Hosts } from "./app";
 import "./index.css";
 
 const CUSTOM_ELEMENT_TAG = "mfe-container-ui";
+
+window.mfeHistory = createBrowserHistory();
 
 class ContainerUI extends HTMLElement {
   constructor() {
@@ -18,7 +21,7 @@ class ContainerUI extends HTMLElement {
   }
 
   connectedCallback() {
-    createRoot(this).render(<App hosts={this.getHosts()} children={this.getChildren()} />);
+    createRoot(this).render(<App />);
   }
 
   disconnectedCallback() {}
