@@ -21,7 +21,7 @@ class ContainerUI extends HTMLElement {
   }
 
   connectedCallback() {
-    createRoot(this).render(<App />);
+    createRoot(this).render(<App key={CUSTOM_ELEMENT_TAG} />);
   }
 
   disconnectedCallback() {}

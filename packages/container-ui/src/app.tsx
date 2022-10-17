@@ -56,7 +56,13 @@ const App = () => {
       </nav>
 
       <div className="container px-4 mx-auto mt-4">
+        <p className="text-lg font-bold">about-ui</p>
         <mfe-about-ui></mfe-about-ui>
+      </div>
+
+      <div className="container px-4 mx-auto mt-4">
+        <p className="text-lg font-bold">home-ui</p>
+        <mfe-home-ui></mfe-home-ui>
       </div>
     </div>
   );

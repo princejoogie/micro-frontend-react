@@ -20,18 +20,18 @@ const App = () => {
 
 const CUSTOM_ELEMENT_TAG = "mfe-about-ui";
 
-class ContainerUI extends HTMLElement {
+class AboutUI extends HTMLElement {
   constructor() {
     super();
   }
 
   connectedCallback() {
-    createRoot(this).render(<App />);
+    createRoot(this).render(<App key={CUSTOM_ELEMENT_TAG} />);
   }
 
   disconnectedCallback() {}
 }
 
 if (customElements.get(CUSTOM_ELEMENT_TAG) === undefined) {
-  customElements.define(CUSTOM_ELEMENT_TAG, ContainerUI);
+  customElements.define(CUSTOM_ELEMENT_TAG, AboutUI);
 }

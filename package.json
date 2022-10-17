@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "yarn workspaces foreach -vpA run dev",
     "build": "yarn workspaces foreach -vpA run build",
+    "preview": "yarn workspaces foreach -vpA run preview",
     "clean": "yarn workspaces foreach -vpA run clean && rm -rf node_modules",
     "format": "yarn workspaces foreach -vpA exec prettier --write ."
   },
