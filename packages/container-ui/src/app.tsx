@@ -14,7 +14,8 @@ window.mfeHistory = createBrowserHistory();
 
 const App = ({ hosts, children }: AppProps) => {
   const defaultHosts: Hosts = {
-    "mfe-about-ui": import.meta.env.VITE_ABOUT_HOST,
+    "mfe-about-ui": `${import.meta.env.VITE_APP_ABOUT_HOST}/main.js`,
+    "mfe-home-ui": `${import.meta.env.VITE_APP_HOME_HOST}/main.js`,
   };
 
   const mergedHosts = { ...defaultHosts, ...hosts };

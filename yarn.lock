@@ -532,6 +532,7 @@ __metadata:
     tailwindcss: ^3.1.8
     typescript: ^4.6.4
     vite: ^3.1.0
+    vite-plugin-html-env: ^1.2.7
   languageName: unknown
   linkType: soft
 
@@ -862,6 +863,7 @@ __metadata:
     tailwindcss: ^3.1.8
     typescript: ^4.6.4
     vite: ^3.1.0
+    vite-plugin-html-env: ^1.2.7
   languageName: unknown
   linkType: soft
 
@@ -1662,9 +1664,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micro-frontend-test@workspace:.":
+"micro-frontend-react@workspace:.":
   version: 0.0.0-use.local
-  resolution: "micro-frontend-test@workspace:."
+  resolution: "micro-frontend-react@workspace:."
   dependencies:
     prettier: ^2.7.1
   languageName: unknown
@@ -2471,6 +2473,15 @@ __metadata:
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
   checksum: 474acf1146cb2701fe3b074892217553dfcf9a031280919ba1b8d651a068c9b15d863b7303cb15bd00a862b498e6cf4ad7b4a08fb134edd5a6f7641681cb54a2
+  languageName: node
+  linkType: hard
+
+"vite-plugin-html-env@npm:^1.2.7":
+  version: 1.2.7
+  resolution: "vite-plugin-html-env@npm:1.2.7"
+  peerDependencies:
+    vite: "*"
+  checksum: 5e40ca5285c9164448aa7f2b4f8dda12365b833649211f086495bad98bda08d69d09855c00991226186a7844e9ed579384e13ca6edd4e9c666556d6941c44e2f
   languageName: node
   linkType: hard
 
