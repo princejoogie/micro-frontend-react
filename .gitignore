@@ -13,13 +13,16 @@ dist-ssr
 *.local
 
 # yarn
+.pnp.*
 .yarn/*
-# !.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Uncomment if you want to use zero-installs
+# !.yarn/cache
 
 # Editor directories and files
 .vscode/*
