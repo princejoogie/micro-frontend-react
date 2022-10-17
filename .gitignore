@@ -24,6 +24,9 @@ dist-ssr
 # Uncomment if you want to use zero-installs
 # !.yarn/cache
 
+# env
+.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
